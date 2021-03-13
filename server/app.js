@@ -39,7 +39,13 @@ app.post('/signup' , function (req, res , next) {
        
    })
 
+   myApp.use(express.static('./build'))
 
+   myApp.use('*', (req, res) => {
+   
+       res.sendFile('index.html', {root: './build/'});
+   
+   });
 
    newUser.save().then( ()=>{ console.log("working");
    })
